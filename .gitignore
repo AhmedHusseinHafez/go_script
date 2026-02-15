@@ -1,0 +1,19 @@
+# Binaries
+tarh-orchestrator
+*.exe
+
+# Environment
+.env
+
+# Assets (auto-generated)
+assets/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
