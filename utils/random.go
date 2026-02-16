@@ -168,6 +168,23 @@ func RandomURL(prefix string) string {
 	return fmt.Sprintf("https://%s.com/%s%d", prefix, slug, rand.Intn(9999))
 }
 
+// RandomRealEstateVideoURL returns a random real estate YouTube video URL.
+func RandomRealEstateVideoURL() string {
+	// Real estate YouTube video IDs - these are real videos about real estate, property, construction, etc.
+	videoIDs := []string{
+		"YE9U-0AYWys",
+		"3H6Evu2hPpE",
+		"4jnzf1yj48M",
+		"j_2Nr1NowRg",
+		"jPkBJY1KI_Q",
+		"MzafNHnq8UQ",
+		"sgrl1w_NLZc",
+		"vwgcKspm868",
+	}
+	videoID := videoIDs[rand.Intn(len(videoIDs))]
+	return fmt.Sprintf("https://www.youtube.com/watch?v=%s", videoID)
+}
+
 // RandomInt returns a random integer in [min, max].
 func RandomInt(min, max int) int {
 	return rand.Intn(max-min+1) + min
