@@ -241,6 +241,12 @@ func isRetryable(err error) bool {
 		return false
 	}
 	msg := err.Error()
+
+	// Do not retry for known backend PHP errors with missing repository classes
+	if strings.Contains(msg, "HTTP 500") {
+		return false
+	}
+
 	// Retry on 5xx or connection-level errors.
 	return strings.Contains(msg, "HTTP 5") ||
 		strings.Contains(msg, "connection refused") ||
