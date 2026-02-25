@@ -28,7 +28,7 @@ type Config struct {
 // Load reads configuration from environment variables with sensible defaults.
 func Load() (*Config, error) {
 	cfg := &Config{
-		BaseURL:    envOrDefault("BASE_URL", "https://api-dev2.tarh.com.sa/api"),
+		BaseURL:    envOrDefault("BASE_URL", "https://api-dev.tarh.com.sa/api"),
 		FPEmail:    envOrDefault("FP_EMAIL", "fp_user_0@sa.com"),
 		FPPassword: envOrDefault("FP_PASSWORD", "secret@123"),
 		SPPassword: envOrDefault("SP_PASSWORD", "Secret@1234"),
