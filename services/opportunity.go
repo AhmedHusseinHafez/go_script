@@ -40,51 +40,53 @@ func (o *OpportunityService) CreateOpportunity(ctx context.Context, state *model
 	imagePath := filepath.Join(o.assetsDir, "test_image.png")
 	pdfPath := filepath.Join(o.assetsDir, "test_document.pdf")
 
-	fundingGoal := utils.RandomInt(1000000, 50000000)
-	totalShares := utils.RandomInt(1000, 100000)
-	pricePerShare := fundingGoal / totalShares
-
-	// "funding_goal":              "100",
-	// "minimum_investment":        "100",
-	// "maximum_investment":        "100",
-	// "total_shares_offered":      "1",
-	// "price_per_share":           "100",
-	// "max_investment_per_retail": "100",
-	// "success_threshold":         "100",
+	// fundingGoal := utils.RandomInt(1000000, 50000000)
+	// totalShares := utils.RandomInt(1000, 100000)
+	// pricePerShare := fundingGoal / totalShares
 
 	fields := map[string]string{
-		"status":                    "2",
-		"project_name_ar":           utils.RandomProjectNameAr(),
-		"project_name_en":           utils.RandomProjectName(),
-		"project_location_ar":       "الرياض، المملكة العربية السعودية",
-		"project_location_en":       utils.RandomAddress(),
-		"project_description_ar":    utils.RandomDescriptionAr(),
-		"project_description_en":    utils.RandomDescription(),
-		"funding_goal":              strconv.Itoa(fundingGoal),
-		"minimum_investment":        strconv.Itoa(utils.RandomInt(100, 2000)),
-		"maximum_investment":        strconv.Itoa(utils.RandomInt(2000, 10000)),
-		"total_shares_offered":      strconv.Itoa(totalShares),
-		"price_per_share":           strconv.Itoa(pricePerShare),
-		"max_investment_per_retail": strconv.Itoa(utils.RandomInt(200, 10000)),
-		"success_threshold":         strconv.Itoa(utils.RandomInt(60, 90)),
-		"offering_start_at":         utils.OfferingStartAt(),
-		"offering_end_at":           utils.OfferingEndAt(),
-		"expected_apr_percent":      utils.RandomFloat(5.0, 15.0),
-		"expected_roi_percent":      utils.RandomFloat(10.0, 30.0),
-		"expected_irr_percent":      utils.RandomFloat(8.0, 25.0),
-		"funding_duration":          strconv.Itoa(utils.RandomInt(6, 36)),
-		"distribution":              strconv.Itoa(utils.RandomInt(1, 5)), // 1:Monthly 2:Quarterly 3:Half Year 4:Yearly 5:At Exit
-		"risk_level":                strconv.Itoa(utils.RandomInt(1, 3)),
-		"platform_coverage":         utils.RandomFloat(1.0, 5.0),
-		"max_number_of_retail":      strconv.Itoa(utils.RandomInt(100, 1000)),
-		"fund_return_period":        strconv.Itoa(utils.RandomInt(6, 24)),
-		"offering_type":             "3",
-		"configuration_type":        "3",
-		"funding_type[name_ar]":     "تمويل بالمشاركة",
-		"funding_type[name_en]":     "Partnership Funding",
-		"exit_strategy[name_ar]":    "بيع الحصص",
-		"exit_strategy[name_en]":    "Equity Sale",
-		"project_video_url":         utils.RandomRealEstateVideoURL(),
+		"status":                 "2",
+		"project_name_ar":        utils.RandomProjectNameAr(),
+		"project_name_en":        utils.RandomProjectName(),
+		"project_location_ar":    "الرياض، المملكة العربية السعودية",
+		"project_location_en":    utils.RandomAddress(),
+		"project_description_ar": utils.RandomDescriptionAr(),
+		"project_description_en": utils.RandomDescription(),
+
+		// "funding_goal":              strconv.Itoa(fundingGoal),
+		// "minimum_investment":        strconv.Itoa(utils.RandomInt(100, 2000)),
+		// "maximum_investment":        strconv.Itoa(utils.RandomInt(2000, 10000)),
+		// "total_shares_offered":      strconv.Itoa(totalShares),
+		// "price_per_share":           strconv.Itoa(pricePerShare),
+		// "max_investment_per_retail": strconv.Itoa(utils.RandomInt(200, 10000)),
+		// "success_threshold":         strconv.Itoa(utils.RandomInt(60, 90)),
+
+		"funding_goal":              "100",
+		"minimum_investment":        "100",
+		"maximum_investment":        "100",
+		"total_shares_offered":      "1",
+		"price_per_share":           "100",
+		"max_investment_per_retail": "100",
+		"success_threshold":         "100",
+
+		"offering_start_at":      utils.OfferingStartAt(),
+		"offering_end_at":        utils.OfferingEndAt(),
+		"expected_apr_percent":   utils.RandomFloat(5.0, 15.0),
+		"expected_roi_percent":   utils.RandomFloat(10.0, 30.0),
+		"expected_irr_percent":   utils.RandomFloat(8.0, 25.0),
+		"funding_duration":       strconv.Itoa(utils.RandomInt(6, 36)),
+		"distribution":           strconv.Itoa(utils.RandomInt(1, 5)), // 1:Monthly 2:Quarterly 3:Half Year 4:Yearly 5:At Exit
+		"risk_level":             strconv.Itoa(utils.RandomInt(1, 3)),
+		"platform_coverage":      utils.RandomFloat(1.0, 5.0),
+		"max_number_of_retail":   strconv.Itoa(utils.RandomInt(100, 1000)),
+		"fund_return_period":     strconv.Itoa(utils.RandomInt(6, 24)),
+		"offering_type":          "3",
+		"configuration_type":     "3",
+		"funding_type[name_ar]":  "تمويل بالمشاركة",
+		"funding_type[name_en]":  "Partnership Funding",
+		"exit_strategy[name_ar]": "بيع الحصص",
+		"exit_strategy[name_en]": "Equity Sale",
+		"project_video_url":      utils.RandomRealEstateVideoURL(),
 	}
 
 	// Build file list: gallery image, hero image, and 6 documents.
